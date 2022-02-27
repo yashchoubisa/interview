@@ -155,6 +155,15 @@ exports.destroy = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
+exports.getAll = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find();
+
+    res.status(200).json({
+        success: true,
+        products
+    });
+});
+
 exports.get = catchAsyncErrors(async (req, res, next) => {
     const product = await Product.findById(req.params.id);
 
